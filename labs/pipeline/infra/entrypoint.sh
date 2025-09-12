@@ -8,6 +8,5 @@ if [ -S /var/run/docker.sock ]; then
   chown 1000:1000 /var/run/docker.sock
 fi
 
-
 # Original Jenkins entrypoint
 exec /usr/local/bin/jenkins.sh "$@"
