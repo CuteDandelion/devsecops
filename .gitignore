@@ -1,1 +1,4 @@
-0
+#persistence dir
+gogs_data/
+jenkins_home/
+
