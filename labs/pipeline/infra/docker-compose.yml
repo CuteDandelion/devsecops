@@ -11,10 +11,8 @@ services:
   jenkins:
     image: jenkins_dockerc
     ports:
-      - "8080:8080"
-    user: root  # Keep for entrypoint
-    group_add:
-      - ${DOCKER_GID}
+      - "8080:8080"  # Keep for entrypoint
+    user: root
     volumes:
       - ./jenkins_home:/var/jenkins_home:Z
       - /var/run/docker.sock:/var/run/docker.sock
