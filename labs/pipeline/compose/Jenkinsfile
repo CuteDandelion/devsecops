@@ -24,7 +24,7 @@ pipeline {
               }
             }
         }
-        /*
+        
         stage('Push') {
           steps {
             echo "Pushing RNG images for release: ${RELEASE}" 
@@ -38,7 +38,7 @@ pipeline {
             }
           }
         }
-        */
+        
     }    
     post{
       always {

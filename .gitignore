@@ -2,3 +2,5 @@
 gogs_data/
 jenkins_home/
 
+#sensitive files
+.env

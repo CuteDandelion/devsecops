@@ -21,5 +21,11 @@ RUN apt-get install -y lsb-release ca-certificates curl gnupg && \
     apt-get install -y docker-ce-cli && \
     rm -rf /var/lib/apt/lists/*
 
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y gosu; \
+    rm -rf /var/lib/apt/lists/*; \
+    gosu --version  # Verify
+
 # Switch back to jenkins user
 USER jenkins
