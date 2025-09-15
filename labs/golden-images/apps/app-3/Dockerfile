@@ -8,7 +8,8 @@ COPY . .
 RUN mvn package
 
 # app
-FROM openjdk:11.0.12-jre-slim-buster
+#FROM openjdk:11.0.12-jre-slim-buster
+FROM courselabs/java:jre-21.12
 
 WORKDIR /app
 COPY --from=builder /usr/src/helloworld/target/helloworld-0.1.0.jar .

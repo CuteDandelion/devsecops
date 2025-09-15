@@ -1,4 +1,4 @@
-FROM java:8-jdk 
+FROM openjdk:8-jdk
 
 WORKDIR /src
 COPY HelloWorld.java .

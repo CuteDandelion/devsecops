@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS sdk
 # Sonar Scanner CLI needs JRE:
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    openjdk-11-jre
+    openjdk-17-jre
 
 # Install the scanner:
 RUN dotnet tool install --tool-path /usr/bin dotnet-sonarscanner

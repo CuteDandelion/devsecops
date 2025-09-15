@@ -2,7 +2,7 @@ FROM maven:3.6.3-jdk-11 AS builder
 ARG SONAR_PROJECT='hello-world-java'
 ARG SONAR_URL='http://host.docker.internal:9000'
 ARG SONAR_TOKEN=''
-ARG SONAR_ENFORCE_GATE='false'
+ARG SONAR_ENFORCE_GATE='true'
 
 WORKDIR /usr/src/helloworld
 COPY pom.xml .
