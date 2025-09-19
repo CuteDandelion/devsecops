@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Audit tools') {                        
             steps {
-                sh '''
+                powershell '''
                   docker version
                   docker compose version
                 '''
@@ -20,7 +20,7 @@ pipeline {
             steps {
               echo "Building RNG images for release: ${RELEASE}"
               dir ('labs/compose-build/rng') {
-                sh 'docker compose -f core.yml -f build.yml -f args.yml -f release.yml -f latest.yml build --pull'
+                powershell 'docker compose -f core.yml -f build.yml -f args.yml -f release.yml -f latest.yml build --pull'
               }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             echo "Pushing RNG images for release: ${RELEASE}" 
             dir ('labs/compose-build/rng') {           
               withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'REGISTRY_USER', passwordVariable: 'REGISTRY_PASSWORD')]) {
-                sh '''
+                powershell '''
                   docker login --username ${REGISTRY_USER} --password ${REGISTRY_PASSWORD}
                   docker compose -f core.yml -f build.yml -f args.yml -f release.yml -f latest.yml push
                 '''
@@ -42,7 +42,7 @@ pipeline {
     }    
     post{
       always {
-        sh 'docker logout'
+        powershell 'docker logout'
       }
     }
 }
