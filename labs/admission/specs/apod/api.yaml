@@ -24,6 +24,7 @@ spec:
     metadata:
       labels:
         app: apod-api
+        version: '1.0'
     spec:
       containers:
         - name: api
@@ -34,4 +35,5 @@ spec:
           resources:
             limits:
               cpu: 500m
+              memory: 300Mi
 

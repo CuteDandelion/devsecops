@@ -13,11 +13,11 @@ spec:
       labels:
         app: whoami
     spec:
-      # automountServiceAccountToken: false
-      # securityContext:
-      #  runAsUser: 65534
-      #  runAsGroup: 3000
-      containers:
+       serviceAccountName: no-api-access
+       securityContext:
+        runAsUser: 65534
+        runAsGroup: 3000
+       containers:
         - name: app
           image: sixeyed/whoami:21.04
           env:
@@ -26,13 +26,16 @@ spec:
           ports:
             - containerPort: 80
               name: http
-          # resources:
-          #  limits:
-          #    cpu: 125m
-          #    memory: 50M
-          # securityContext:          
-          #  readOnlyRootFilesystem: true
-          #  allowPrivilegeEscalation: false
-          #  capabilities:
-          #    drop:
-          #      - all
+          resources:
+            requests:
+              cpu: 63m
+              memory: 25M
+            limits:
+              cpu: 125m
+              memory: 50M
+          securityContext:          
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - all
