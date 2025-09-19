@@ -31,9 +31,7 @@ pipeline {
             dir ('labs/compose-build/rng') {           
               withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'REGISTRY_USER', passwordVariable: 'REGISTRY_PASSWORD')]) {
                 powershell '''
-                  Write-Host "DEBUG: User=$env:REGISTRY_USER"
-                  Write-Host "DEBUG: Password=$env:REGISTRY_PASSWORD"
-                  Write-Output -NoNewline $env:REGISTRY_PASSWORD | docker login -u $env:REGISTRY_USER --password-stdin
+                  [Console]::Out.Write($env:REGISTRY_PASSWORD) | docker login -u $env:REGISTRY_USER --password-stdin
                   docker compose -f core.yml -f build.yml -f args.yml -f release.yml -f latest.yml push
                 '''
               }
