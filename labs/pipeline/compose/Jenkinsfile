@@ -30,7 +30,7 @@ pipeline {
             echo "Pushing RNG images for release: ${RELEASE}" 
             dir ('labs/compose-build/rng') {           
               withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'REGISTRY_USER', passwordVariable: 'REGISTRY_PASSWORD')]) {
-                powershell '''
+                bat '''
                   echo %REGISTRY_PASSWORD% | docker login -u %REGISTRY_USER% --password-stdin 
                   docker compose -f core.yml -f build.yml -f args.yml -f release.yml -f latest.yml push
                 '''
