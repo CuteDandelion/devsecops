@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rng-api
+  labels:
+    app: rng-api
+  annotations:
+    kubernetes.io/ingress.class: nginx   # or "azure/application-gateway"
+spec:
+  rules:
+    - host: api.172.191.3.247.nip.io          # replace with your real domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: rng-api
+                port:
+                  number: 5000
