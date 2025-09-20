@@ -19,6 +19,9 @@ spec:
           image: cutedandelion/rng-web:latest
           ports:
             - containerPort: 80
+          env:
+            - name: RngApi__Url
+              value: "http://api.172.191.3.247.nip.io/"
           resources:
             requests:
               cpu: "100m"
