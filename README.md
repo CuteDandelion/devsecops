@@ -13,5 +13,5 @@ Parts of the practical work are adapted from other labs:
 - [Observability](https://observability.courselabs.co) - https://github.com/courselabs/observability
 
 ## Labs Highlight
-labs/pipeline/compose - JenkinsFile : Jenkins Pipeline
-labs/pipeline/argocd -  kubernetes manifest : argocd Pipeline
+- labs/pipeline/compose --> JenkinsFile : Jenkins Pipeline
+- labs/pipeline/argocd  --> kubernetes manifest : argocd Pipeline
